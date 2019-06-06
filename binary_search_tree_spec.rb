@@ -70,37 +70,4 @@ describe Tree do
       end
     end
   end
-
-  describe '#delete' do
-    before do
-      tree.append(two)
-      tree.append(one)
-      tree.append(three)
-      tree.append(four)
-    end
-
-    context 'when deleteing a leaf node' do
-      before { tree.delete(one) }
-
-      it 'deletes node' do
-        expect(two.left_node).to be nil
-      end
-    end
-
-    context 'when deleting a node with one child' do
-      before { tree.delete(three) }
-
-      it 'deletes node' do
-
-      end
-    end
-
-    context 'when deleting a node with two children' do
-      before { tree.delete(two) }
-
-      it 'deletes node' do
-
-      end
-    end
-  end
 end

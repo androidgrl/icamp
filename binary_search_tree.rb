@@ -49,6 +49,13 @@ class Tree
       return current_node
     end
   end
+
+  def traverse(current_node=head)
+    return if current_node.nil?
+    traverse(current_node.left_node)
+    puts current_node.data
+    traverse(current_node.right_node)
+  end
 end
 
 class Node
@@ -59,3 +66,20 @@ class Node
     @data = data
   end
 end
+
+tree = Tree.new
+one = Node.new(1)
+two = Node.new(2)
+three = Node.new(3)
+four = Node.new(4)
+five = Node.new(5)
+six = Node.new(6)
+seven = Node.new(7)
+tree.append(four)
+tree.append(two)
+tree.append(six)
+tree.append(one)
+tree.append(three)
+tree.append(five)
+tree.append(seven)
+tree.traverse
