@@ -15,12 +15,12 @@ class Trie
   end
 
   def add_character(c, current_node)
-    match = current_node.child_nodes.find { |n| n.data == c }
+    match = current_node.child_nodes[c]
     if match
       return match
     else
       node = Node.new(c)
-      current_node.child_nodes << node
+      current_node.child_nodes[c] = node
       node
     end
   end
@@ -34,12 +34,10 @@ class Trie
   end
 
   def find_character(c, current_node)
-    match = current_node.child_nodes.find { |n| n.data == c }
-    if match
-      match
-    else
-      return false
-    end
+    return false if !current_node
+    match = current_node.child_nodes[c]
+    return false if !match
+    match
   end
 end
 
@@ -49,7 +47,7 @@ class Node
 
   def initialize(data)
     @data = data
-    @child_nodes = []
+    @child_nodes = {}
     @is_word = false
   end
 end
@@ -60,6 +58,7 @@ trie.add_word('bet')
 puts trie.word_exists?('bet')
 puts trie.word_exists?('b')
 puts trie.word_exists?('c')
+puts trie.word_exists?('better')
 '*'
 'b'
 'e^'
