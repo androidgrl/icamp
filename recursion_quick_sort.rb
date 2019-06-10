@@ -1,7 +1,7 @@
-def swap(array, x, y)
-  first = array[x]
-  array[x] = array[y]
-  array[y] = first
+def swap(array, first, second)
+  value = array[first]
+  array[first] = array[second]
+  array[second] = value
 end
 
 def partition(array, start, finish)
@@ -9,16 +9,16 @@ def partition(array, start, finish)
   counter = start
   while counter < finish
     if array[counter] <= array[finish]
-      swap(array, pivot, counter)
+      swap(array, counter, pivot)
       pivot += 1
     end
     counter += 1
   end
-  swap(array, finish, pivot)
+  swap(array, pivot, finish)
   return pivot
 end
 
-def quick_sort(array, start=0, finish=array.length - 1)
+def quick_sort(array, start, finish)
   if start < finish
     pivot = partition(array, start, finish)
     quick_sort(array, start, pivot - 1)
@@ -26,6 +26,6 @@ def quick_sort(array, start=0, finish=array.length - 1)
   end
 end
 
-array = [6,8,3,-2,5,10,0,3]
-quick_sort(array)
+array = [5, 2, 13, 8, 16, 12]
+quick_sort(array, 0, 4)
 p array

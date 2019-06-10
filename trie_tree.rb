@@ -55,11 +55,19 @@ end
 trie = Trie.new
 trie.add_word('be')
 trie.add_word('bet')
+trie.add_word('better')
+trie.add_word('begin')
+trie.add_word('beg')
+trie.add_word('begs')
+trie.add_word('bat')
+trie.add_word('cat')
 puts trie.word_exists?('bet')
 puts trie.word_exists?('b')
-puts trie.word_exists?('c')
+puts trie.word_exists?('cat')
 puts trie.word_exists?('better')
-'*'
-'b'
-'e^'
-'t^'
+p trie.list_words('be')
+
+#be, bet, better, begin, beg, begs
+#b-e*-t*-t-e-r*
+#    -g*-i-n*
+#       -s*
